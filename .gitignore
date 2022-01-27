@@ -1,0 +1,15 @@
+# Directories
+lib/
+node_modules/
+
+# dotenv
+.env*
+
+# Build
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+
+# Mac files
+.DS_Store
