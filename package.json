@@ -16,7 +16,7 @@
     "prestart-debug": "yarn run prestart",
     "prestart-dev": "yarn run prestart",
     "prestart-prod": "yarn run prestart",
-    "start": "APP_ENV=prod node ./lib/src/app.js",
+    "start": "node ./lib/src/app.js",
     "start-debug": "APP_ENV=dev DEBUG=true NODE_DEBUG=http nodemon --watch './src/**' --ext 'js,json,ts' --exec 'ts-node' ./src/app.ts",
     "start-dev": "APP_ENV=dev nodemon --watch './src/**' --ext 'js,json,ts' --exec 'ts-node' ./src/app.ts",
     "start-prod": "APP_ENV=prod nodemon --watch './src/**' --ext 'js,json,ts' --exec 'ts-node' ./src/app.ts",
