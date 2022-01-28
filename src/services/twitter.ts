@@ -1,4 +1,6 @@
-import twit from 'twit';
+import twit, {
+  Params,
+} from 'twit';
 import axios from 'axios';
 import moment from 'moment';
 import logger from './logger';
@@ -10,6 +12,21 @@ const twitterClient = new twit({
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
 });
 
+export interface IResponse {
+  created_at: string;
+  full_text: string;
+  id_str: string;
+  media_id_string: string;
+};
+
+export interface IPromiseGetResponse {
+  data: IResponse[];
+}
+
+export interface IPromisePostResponse {
+  data: IResponse;
+}
+
 export async function getBase64(url: string): Promise<string> {
   const response = await axios.get(url, {
     responseType: 'arraybuffer',
@@ -18,10 +35,10 @@ export async function getBase64(url: string): Promise<string> {
   return Buffer.from(response.data, 'binary').toString('base64');
 }
 
-export async function getLastStatsTweet() {
+export async function getLastStatsTweet(): Promise<IResponse | undefined> {
   const {
     data,
-  } = await twitterClient.get('statuses/user_timeline', {
+  } = <IPromiseGetResponse> await twitterClient.get('statuses/user_timeline', {
     count: 200,
     exclude_replies: true,
     screen_name: 'DriftFuturesBot',
@@ -34,7 +51,7 @@ export async function getLastStatsTweet() {
     .find(({ full_text }) => full_text.includes('The latest stats from the @DriftProtocol perpetual futures platform:'));
 }
 
-export function reportTwitterError(error) {
+export function reportTwitterError(error: any): void {
   const {
     message,
     statusCode,
@@ -43,27 +60,27 @@ export function reportTwitterError(error) {
   logger.error({ message, statusCode });
 }
 
-export function sortTweetsByCreatedDesc(a, b) {
+export function sortTweetsByCreatedDesc(a: IResponse, b: IResponse): number {
   const aTimestamp = moment(a.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY').unix();
   const bTimestamp = moment(b.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY').unix();
 
   return bTimestamp - aTimestamp;
 }
 
-export async function tweet(params) {
+export async function tweet(params: Params): Promise<IResponse> {
   const {
     data,
-  } = await twitterClient.post('statuses/update', params);
+  } = <IPromisePostResponse> await twitterClient.post('statuses/update', params);
 
   return data;
 }
 
-export async function tweetWithImage(params, imageUrl) {
+export async function tweetWithImage(params: Params, imageUrl: string): Promise<IResponse> {
   const processedImage = await getBase64(imageUrl);
 
   const {
     data,
-  } = await twitterClient.post('media/upload', {
+  } = <IPromisePostResponse> await twitterClient.post('media/upload', {
     media_data: processedImage,
   });
 
