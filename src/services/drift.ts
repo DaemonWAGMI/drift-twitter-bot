@@ -100,6 +100,7 @@ export async function connect(wallet: Wallet, optionalSubscriptions: ClearingHou
   ClearingHouseSubscription.eventEmitter.on('marketsAccountUpdate', onMarketsAccountUpdate);
   ClearingHouseSubscription.eventEmitter.on('stateAccountUpdate', onStateAccountUpdate);
 
+  isDriftConnected = true;
   return true;
 }
 
