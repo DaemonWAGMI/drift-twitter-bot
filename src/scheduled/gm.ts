@@ -2,7 +2,6 @@ import emoji from 'node-emoji';
 import { isDevEnv } from '../services/environment';
 import logger from '../services/logger';
 import {
-  IResponse,
   reportTwitterError,
   tweet,
 } from '../services/twitter';
@@ -12,7 +11,7 @@ export async function gm() {
   if (!isDevEnv()) {
     let response;
     try {
-      response = <IResponse> await tweet({
+      response = await tweet({
         status,
       });
     } catch (error) {
