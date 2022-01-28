@@ -9,6 +9,7 @@ import logger from './services/logger';
 import { getWalletFromPrivateKey } from './services/solana';
 import { delay } from './services/utilities';
 import { gm } from './scheduled/gm';
+import { stats } from './scheduled/stats';
 
 (async () => {
   logger.info('App starting');
@@ -33,12 +34,16 @@ import { gm } from './scheduled/gm';
     }
   }
 
-  const parsedSchedule = Object.assign(JSON.parse(process.env.TWEET_GM_SCHEDULE), {
+  schedule.scheduleJob(Object.assign(JSON.parse(process.env.TWEET_GM_SCHEDULE), {
     minute: Math.floor(Math.random() * 60),
-  });
-  schedule.scheduleJob(parsedSchedule, async () => {
+  }), async () => {
     logger.info('Scheduled \'gm\' tweet');
     await gm();
+  });
+
+  schedule.scheduleJob(JSON.parse(process.env.TWEET_STATS_SCHEDULE), async () => {
+    logger.info('Scheduled \'stats\' tweet');
+    await stats();
   });
 
   //driftLiquidationHistoryAccountUpdate();

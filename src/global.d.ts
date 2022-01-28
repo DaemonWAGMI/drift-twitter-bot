@@ -6,6 +6,7 @@ declare global {
       DRIFT_ENV: DriftEnv;
       RPC_ADDRESS: string;
       TWEET_GM_SCHEDULE: string;
+      TWEET_STATS_SCHEDULE: string;
       TWITTER_ACCESS_TOKEN_KEY: string;
       TWITTER_ACCESS_TOKEN_SECRET: string;
       TWITTER_CONSUMER_KEY: string;
