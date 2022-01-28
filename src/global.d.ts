@@ -5,6 +5,7 @@ declare global {
     interface ProcessEnv {
       DRIFT_ENV: DriftEnv;
       RPC_ADDRESS: string;
+      TWEET_FUNDING_SCHEDULE: string;
       TWEET_GM_SCHEDULE: string;
       TWEET_STATS_SCHEDULE: string;
       TWITTER_ACCESS_TOKEN_KEY: string;

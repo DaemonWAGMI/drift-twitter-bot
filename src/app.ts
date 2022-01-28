@@ -8,6 +8,7 @@ import {
 import logger from './services/logger';
 import { getWalletFromPrivateKey } from './services/solana';
 import { delay } from './services/utilities';
+import { funding } from './scheduled/funding';
 import { gm } from './scheduled/gm';
 import { stats } from './scheduled/stats';
 
@@ -33,6 +34,11 @@ import { stats } from './scheduled/stats';
       await delay(10000);
     }
   }
+
+  schedule.scheduleJob(JSON.parse(process.env.TWEET_FUNDING_SCHEDULE), async () => {
+    logger.info('Scheduled \'funding\' tweet');
+    await funding();
+  });
 
   schedule.scheduleJob(Object.assign(JSON.parse(process.env.TWEET_GM_SCHEDULE), {
     minute: Math.floor(Math.random() * 60),
