@@ -108,7 +108,7 @@ https://app.drift.trade/${longMarketsData[0].baseAssetSymbol}`;
   }
 
   const shortMarketsData = marketsFundingData
-    .filter(({ funding: { yearly: { longFundingRate } } }) => longFundingRate.lt(ZERO))
+    .filter(({ funding: { yearly: { longFundingRate } } }) => longFundingRate.gt(ZERO))
     .sort(({ funding: { yearly: { longFundingRate: aFundingRate } } }, { funding: { yearly: { longFundingRate: bFundingRate } } }) => bFundingRate.sub(aFundingRate).toNumber())
     .slice(0, 3);
 
