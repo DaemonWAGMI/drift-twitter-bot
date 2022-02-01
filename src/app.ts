@@ -5,6 +5,7 @@ import {
   connect as connectDrift,
   destroy as destroyDrift,
 } from './services/drift';
+import { REQUIRED_ENV } from './services/environment';
 import logger from './services/logger';
 import { getWalletFromPrivateKey } from './services/solana';
 import { delay } from './services/utilities';
@@ -14,6 +15,15 @@ import { stats } from './scheduled/stats';
 
 (async () => {
   logger.info('App starting');
+
+  if (REQUIRED_ENV.some(envVariable => process.env[envVariable] === undefined)) {
+    REQUIRED_ENV.forEach(envVariable => {
+      if (process.env[envVariable] === undefined) {
+        logger.error(`Missing required '${envVariable}' environment variable`);
+      }
+    });
+    return;
+  }
 
   const wallet = getWalletFromPrivateKey(JSON.parse(process.env.WALLET_PRIVATE_KEY));
 
