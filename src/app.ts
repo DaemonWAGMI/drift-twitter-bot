@@ -40,9 +40,9 @@ import { stats } from './scheduled/stats';
     await funding();
   });
 
-  schedule.scheduleJob(Object.assign(JSON.parse(process.env.TWEET_GM_SCHEDULE), {
+  schedule.scheduleJob(Object.assign({
     minute: Math.floor(Math.random() * 60),
-  }), async () => {
+  }, JSON.parse(process.env.TWEET_GM_SCHEDULE)), async () => {
     logger.info('Scheduled \'gm\' tweet');
     await gm();
   });
