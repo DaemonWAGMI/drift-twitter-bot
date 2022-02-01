@@ -314,10 +314,10 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@drift-labs/sdk@^0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@drift-labs/sdk/-/sdk-0.1.17.tgz#6bd63e405d9a197968101bced819838920770d8a"
-  integrity sha512-GWjyo4wJJ554O/PeY1zPCC2hRpGgzU4NB5ntsS6O++xWJgIaSWlfqjHM0fGLnCdnDnjFSBD+fIuzZpvsuosHJA==
+"@drift-labs/sdk@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@drift-labs/sdk/-/sdk-0.1.18.tgz#be2d37d2155bdeb3169d760d92aac728c354e2a5"
+  integrity sha512-FaVbNZHqgMFgS3K02Vx4joWNxaqIkcqSbKmdS2xSeFchqSNyaP2mGoMcebdXKtZvTKmmUm9qlPuiuXWMKwCSWw==
   dependencies:
     "@project-serum/anchor" "0.19.1-beta.1"
     "@pythnetwork/client" "^2.5.1"
