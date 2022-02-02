@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
 dotenv.config({
-  debug: isDebug(),
+  ...(isDebug() && { debug: true, }),
   path: `./.env.${process.env.APP_ENV}`,
 });
 
