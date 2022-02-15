@@ -314,17 +314,17 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@drift-labs/sdk@^0.1.18":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@drift-labs/sdk/-/sdk-0.1.18.tgz#be2d37d2155bdeb3169d760d92aac728c354e2a5"
-  integrity sha512-FaVbNZHqgMFgS3K02Vx4joWNxaqIkcqSbKmdS2xSeFchqSNyaP2mGoMcebdXKtZvTKmmUm9qlPuiuXWMKwCSWw==
+"@drift-labs/sdk@^0.1.20":
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/@drift-labs/sdk/-/sdk-0.1.20.tgz#00bf2bb2aabe66760c07c007c2fd9eed4420d026"
+  integrity sha512-rmFlL4EaO4OE31eIqB7ZSHugR0hktpYj6BSaaPskLRh1I6yNjMUQVpl27GPL/SaVH0AUEn0hqFWvycEomWRhQg==
   dependencies:
     "@project-serum/anchor" "0.19.1-beta.1"
     "@pythnetwork/client" "^2.5.1"
     "@solana/spl-token" "^0.1.6"
     "@solana/web3.js" "^1.22.0"
-    "@types/bn.js" "^5.1.0"
     strict-event-emitter-types "^2.0.0"
+    uuid "^8.3.2"
 
 "@ethersproject/bytes@^5.5.0":
   version "5.5.0"
@@ -707,13 +707,6 @@
   version "4.11.6"
   resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-4.11.6.tgz#c306c70d9358aaea33cd4eda092a742b9505967c"
   integrity sha512-pqr857jrp2kPuO9uRjZ3PwnJTjoQy+fcdxvBTvHm6dkmEL9q+hDD/2j/0ELOBPtPnS8LjCX0gI9nbl8lVkadpg==
-  dependencies:
-    "@types/node" "*"
-
-"@types/bn.js@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-5.1.0.tgz#32c5d271503a12653c62cf4d2b45e6eab8cebc68"
-  integrity sha512-QSSVYj7pYFN49kW77o2s9xTCwZ8F2xLbjLLSEVh8D2F4JUhZtPAGOFLTD+ffqksBx/u4cE/KImFjyhqCjn/LIA==
   dependencies:
     "@types/node" "*"
 

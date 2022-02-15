@@ -1,6 +1,6 @@
 {
   "name": "drift-twitter-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Drift Twitter Bot",
   "main": "lib/app.ts",
   "engines": {
@@ -35,7 +35,7 @@
     "url": "https://github.com/DaemonWAGMI/drift-twitter-bot/issues"
   },
   "dependencies": {
-    "@drift-labs/sdk": "^0.1.18",
+    "@drift-labs/sdk": "^0.1.20",
     "@project-serum/anchor": "0.19.1-beta.1",
     "@solana/web3.js": "^1.30.2",
     "axios": "^0.25.0",

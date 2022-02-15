@@ -79,6 +79,9 @@ export async function connect(wallet: Wallet, optionalSubscriptions: ClearingHou
     return false;
   }
 
+  ClearingHouseSubscription.eventEmitter.on('marketsAccountUpdate', onMarketsAccountUpdate);
+  ClearingHouseSubscription.eventEmitter.on('stateAccountUpdate', onStateAccountUpdate);
+
   let clearingHouseSubscription;
   try {
     clearingHouseSubscription = await ClearingHouseSubscription.subscribe([
@@ -96,9 +99,6 @@ export async function connect(wallet: Wallet, optionalSubscriptions: ClearingHou
     isDriftConnected = false;
     return false;
   }
-
-  ClearingHouseSubscription.eventEmitter.on('marketsAccountUpdate', onMarketsAccountUpdate);
-  ClearingHouseSubscription.eventEmitter.on('stateAccountUpdate', onStateAccountUpdate);
 
   isDriftConnected = true;
   return true;
