@@ -10,6 +10,7 @@ node_modules/
 
 # Logs
 npm-debug.log*
+yarn-error.log*
 
 # Mac files
 .DS_Store
