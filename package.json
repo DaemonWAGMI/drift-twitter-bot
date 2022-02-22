@@ -2,7 +2,7 @@
   "name": "drift-twitter-bot",
   "version": "1.0.1",
   "description": "Drift Twitter Bot",
-  "main": "lib/app.ts",
+  "main": "lib/app.js",
   "engines": {
     "node": "16.9.x"
   },

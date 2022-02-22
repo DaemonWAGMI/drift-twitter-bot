@@ -72,6 +72,6 @@ process.once('uncaughtException', async (error: any) => {
 });
 
 onExit((code: number | null, signal: string | null) => {
-  logger.debug('Cleaning up app', code, signal);
+  logger.debug(`Cleaning up app; code: ${code}, signal: ${signal}`);
   destroyDrift();
 });
