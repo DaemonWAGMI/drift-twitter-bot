@@ -12,13 +12,13 @@ import {
   Wallet,
   Market,
   MarketsAccount,
-  PythClient,
   StateAccount,
   calculateInsuranceFundSize,
   calculateLongShortFundingRate,
   convertBaseAssetAmountToNumber,
   convertToNumber,
   estimateTps,
+  getOracleClient,
 	initialize,
 } from '@drift-labs/sdk';
 import logger from './logger';
@@ -124,15 +124,15 @@ export function getErrorFromHexCode(hexCode: string, idl: ClearingHouseIdl): Cle
 }
 
 export async function getFundingRates(marketsData: MarketsAccount): Promise<FundingRate[]> {
-  const pythClient = new PythClient(rpcConnection);
-  return await Promise.all(MARKETS.map(async ({ baseAssetSymbol, marketIndex }) => {
+  return await Promise.all(MARKETS.map(async ({ baseAssetSymbol, marketIndex, oracleSource }) => {
+    const oracleClient = getOracleClient(oracleSource, rpcConnection, 'mainnet-beta');
     const marketData: Market = marketsData.markets[marketIndex.toNumber()];
 
     let hourlyLongFundingRate, hourlyShortFundingRate, yearlyLongFundingRate, yearlyShortFundingRate;
     try {
-      const pythPriceData = await pythClient.getPriceData(marketData.amm.oracle);
-      const hourlyFundingRates = await calculateLongShortFundingRate(marketData, pythPriceData, HOURLY_FUNDING_TIMEFRAME);
-      const yearlyFundingRates = await calculateLongShortFundingRate(marketData, pythPriceData, YEARLY_FUNDING_TIMEFRAME);
+      const oraclePriceData = await oracleClient.getOraclePriceData(marketData.amm.oracle);
+      const hourlyFundingRates = await calculateLongShortFundingRate(marketData, oraclePriceData, HOURLY_FUNDING_TIMEFRAME);
+      const yearlyFundingRates = await calculateLongShortFundingRate(marketData, oraclePriceData, YEARLY_FUNDING_TIMEFRAME);
       hourlyLongFundingRate = hourlyFundingRates[0];
       hourlyShortFundingRate = hourlyFundingRates[1];
       yearlyLongFundingRate = yearlyFundingRates[0];
