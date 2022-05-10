@@ -94,9 +94,9 @@ export async function funding() {
         reportTwitterError(error);
         return;
       }
-      logger.debug(`Tweeted (${longStatus.length} characters): https://twitter.com/DriftFuturesBot/status/${response.id_str}`);
+      logger.info(`Tweeted (${longStatus.length} characters): https://twitter.com/DriftFuturesBot/status/${response.id_str}`);
     } else {
-      logger.debug(`Tweeted (${longStatus.length} characters):
+      logger.info(`Tweeted (${longStatus.length} characters):
 
     ${longStatus}`);
     }
@@ -152,9 +152,9 @@ export async function funding() {
         reportTwitterError(error);
         return;
       }
-      logger.debug(`Tweeted (${shortStatus.length} characters): https://twitter.com/DriftFuturesBot/status/${response.id_str}`);
+      logger.info(`Tweeted (${shortStatus.length} characters): https://twitter.com/DriftFuturesBot/status/${response.id_str}`);
     } else {
-      logger.debug(`Tweeted (${shortStatus.length} characters):
+      logger.info(`Tweeted (${shortStatus.length} characters):
 
     ${shortStatus}`);
     }

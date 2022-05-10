@@ -95,9 +95,9 @@ export async function stats() {
       reportTwitterError(error);
       return;
     }
-    logger.debug(`Tweeted (${status.length} characters): https://twitter.com/DriftFuturesBot/status/${response.id_str}`);
+    logger.info(`Tweeted (${status.length} characters): https://twitter.com/DriftFuturesBot/status/${response.id_str}`);
   } else {
-    logger.debug(`Tweeted (${status.length} characters):
+    logger.info(`Tweeted (${status.length} characters):
 
 ${status}`);
   }
