@@ -8,6 +8,7 @@ dotenv.config({
 export const REQUIRED_ENV = [
   'APP_ENV',
   'DRIFT_ENV',
+  'LOG_LEVEL',
   'RPC_ADDRESS',
   'TWEET_FUNDING_SCHEDULE',
   'TWEET_GM_SCHEDULE',

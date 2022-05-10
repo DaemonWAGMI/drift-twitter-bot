@@ -73,8 +73,8 @@ export async function connect(wallet: Wallet, optionalSubscriptions: ClearingHou
   		anchorProvider.wallet,
       new PublicKey(initializeClearingHouse.CLEARING_HOUSE_PROGRAM_ID)
   	);
-  } catch (error) {
-    logger.error(error);
+  } catch (error: any) {
+    logger.error(error, { stack: new Error().stack });
     isDriftConnected = false;
     return false;
   }
@@ -88,8 +88,8 @@ export async function connect(wallet: Wallet, optionalSubscriptions: ClearingHou
       'liquidationHistoryAccount',
       'tradeHistoryAccount',
     ]);
-  } catch (error) {
-    logger.error(error);
+  } catch (error: any) {
+    logger.error(error, { stack: new Error().stack });
     isDriftConnected = false;
     return false;
   }

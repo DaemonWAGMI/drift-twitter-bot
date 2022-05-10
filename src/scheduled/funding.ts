@@ -40,8 +40,8 @@ export async function funding() {
   let marketsFundingData;
   try {
     marketsFundingData = await getFundingRates(MarketsAccountData);
-  } catch (error) {
-    logger.error(error);
+  } catch (error: any) {
+    logger.error(error, { stack: new Error().stack });
     return;
   }
 

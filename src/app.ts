@@ -35,8 +35,8 @@ import { stats } from './scheduled/stats';
         'liquidationHistoryAccount',
         'tradeHistoryAccount',
       ]);
-    } catch (error) {
-      logger.error(error);
+    } catch (error: any) {
+      logger.error(error, { stack: new Error().stack });
       return;
     }
 
@@ -66,7 +66,7 @@ import { stats } from './scheduled/stats';
 })();
 
 process.once('uncaughtException', async (error: any) => {
-  logger.error(error);
+  logger.error(error, { stack: new Error().stack });
   destroyDrift();
   process.exit(1);
 });

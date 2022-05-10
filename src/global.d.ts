@@ -4,6 +4,7 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       DRIFT_ENV: DriftEnv;
+      LOG_LEVEL: string;
       RPC_ADDRESS: string;
       TWEET_FUNDING_SCHEDULE: string;
       TWEET_GM_SCHEDULE: string;

@@ -10,6 +10,7 @@ import { name } from '../../package.json';
 const {
   combine,
   errors,
+  json,
   prettyPrint,
   timestamp,
 } = format;
@@ -22,14 +23,14 @@ export default createLogger({
     errors({
       stack: true,
     }),
-    prettyPrint(),
     timestamp({
-      format: `${moment.ISO_8601}`,
+      format: moment.HTML5_FMT.DATETIME_LOCAL_SECONDS,
     }),
   ),
   transports: [
     new transports.Console({
-      level: isDevEnv() ? 'debug' : 'warn',
+      format: isDevEnv() ? prettyPrint() : json(),
+      level: process.env.LOG_LEVEL,
     }),
   ],
 });

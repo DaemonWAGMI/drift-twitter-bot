@@ -57,7 +57,7 @@ export function reportTwitterError(error: any): void {
     statusCode,
   } = error;
 
-  logger.error({ message, statusCode });
+  logger.error({ message, statusCode }, { stack: new Error().stack });
 }
 
 export function sortTweetsByCreatedDesc(a: IResponse, b: IResponse): number {

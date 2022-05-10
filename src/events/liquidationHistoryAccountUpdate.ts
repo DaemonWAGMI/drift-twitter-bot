@@ -57,8 +57,8 @@ async function onEventLiquidations({ head, liquidationRecords }: LiquidationHist
 
     try {
       await sendDiscord(message, process.env.DISCORD_GUILD, process.env.DISCORD_CHANNEL_LIQUIDATIONS);
-    } catch (error) {
-      logger.error(error);
+    } catch (error: any) {
+      logger.error(error, { stack: new Error().stack });
     }
     logger.info(`Messaged Discord:
 ----

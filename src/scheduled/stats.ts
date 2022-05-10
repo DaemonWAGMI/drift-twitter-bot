@@ -66,8 +66,8 @@ export async function stats() {
   let users;
   try {
     users = await ClearingHouseSubscription.program.account.user.all();
-  } catch (error) {
-    logger.error(error);
+  } catch (error: any) {
+    logger.error(error, { stack: new Error().stack });
     return;
   }
 
