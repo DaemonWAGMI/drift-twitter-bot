@@ -82,11 +82,7 @@ export async function funding() {
     }
     longStatus += `${imbalancedMarkets.length > 0 ? `
 
-\u2003* Denotes that [funding is capped](https://docs.drift.trade/funding-rates#uj-capped-symmetric-funding) due to a long-short imbalance` : ''}
-
-Trade $${longMarketsData[0].baseAssetSymbol} here ${emoji.get('point_down')}
-
-https://app.drift.trade/${longMarketsData[0].baseAssetSymbol}`;
+\u2003* Denotes that [funding is capped](https://docs.drift.trade/funding-rates#uj-capped-symmetric-funding) due to a long-short imbalance` : ''}`;
 
     if (!isDevEnv()) {
       let response;
@@ -144,11 +140,7 @@ https://app.drift.trade/${longMarketsData[0].baseAssetSymbol}`;
     }
     shortStatus += `${imbalancedMarkets.length > 0 ? `
 
-  * Funding is capped due to a long-short imbalance` : ''}
-
-Trade $${shortMarketsData[0].baseAssetSymbol} here ${emoji.get('point_down')}
-
-https://app.drift.trade/${shortMarketsData[0].baseAssetSymbol}`;
+\u2003* Denotes that [funding is capped](https://docs.drift.trade/funding-rates#uj-capped-symmetric-funding) due to a long-short imbalance` : ''}`;
 
     if (!isDevEnv()) {
       let response;
