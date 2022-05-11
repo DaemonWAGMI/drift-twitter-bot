@@ -64,7 +64,7 @@ export async function funding() {
           },
         },
       } = market;
-      const convertedYearlyLongFundingRate = Math.min(convertToNumber(yearlyLongFundingRate, TWAP_PRECISION), 1100);
+      const convertedYearlyLongFundingRate = Math.max(convertToNumber(yearlyLongFundingRate, TWAP_PRECISION), -1100);
       const formattedYearlyLongFundingRate = convertedYearlyLongFundingRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const formattedYearlyShortFundingRate = Math.min(convertToNumber(yearlyShortFundingRate, TWAP_PRECISION), 1100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const isImbalanced = !yearlyLongFundingRate.eq(yearlyShortFundingRate);
@@ -122,7 +122,7 @@ export async function funding() {
           },
         },
       } = market;
-      const convertedYearlyLongFundingRate = Math.min(convertToNumber(yearlyLongFundingRate, TWAP_PRECISION), 1100);
+      const convertedYearlyLongFundingRate = Math.max(convertToNumber(yearlyLongFundingRate, TWAP_PRECISION), -1100);
       const formattedYearlyLongFundingRate = convertedYearlyLongFundingRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const formattedYearlyShortFundingRate = Math.min(convertToNumber(yearlyShortFundingRate, TWAP_PRECISION), 1100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const isImbalanced = !yearlyLongFundingRate.eq(yearlyShortFundingRate);
